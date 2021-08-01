@@ -6,9 +6,9 @@ Car Insurance Checker is an Android application that lets a user type a Ghanaian
 - The client device must have a Ghanaian SIM card installed.
 
 ## Screenshots
-| [!Screenshot1](https://github.com/anohene1/car_insurance_checker/blob/master/Screenshot1.jpg) | [!Screenshot2](https://github.com/anohene1/car_insurance_checker/blob/master/Screenshot2.jpg) |
+| ![Screenshot1](https://github.com/anohene1/car_insurance_checker/blob/master/Screenshot1.jpg) | ![Screenshot2](https://github.com/anohene1/car_insurance_checker/blob/master/Screenshot2.jpg) |
 | ----------- | ----------- |
-| [!Screenshot3](https://github.com/anohene1/car_insurance_checker/blob/master/Screenshot3.jpg) | [!Screenshot4](https://github.com/anohene1/car_insurance_checker/blob/master/Screenshot4.jpg) |
+| ![Screenshot3](https://github.com/anohene1/car_insurance_checker/blob/master/Screenshot3.jpg) | ![Screenshot4](https://github.com/anohene1/car_insurance_checker/blob/master/Screenshot4.jpg) |
 
 ## Getting Started
 
