@@ -2,34 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class Home extends StatefulWidget {
-
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-
-
   static const methodChannel = MethodChannel('com.anohene.insurance');
 
+  // Initialize the Hover SDk through method channel
   Future initialize() async {
     await methodChannel.invokeMethod("hoverInitial");
   }
 
-  Future sendUssd(
-      {@required String? actionId, String? licenseNumber}) async =>
-      await methodChannel.invokeMethod(
-          "hoverStartTransaction", {"action_id": actionId, "number": licenseNumber});
-
+  // Passes data to and starts Hover SDK
+  Future sendUssd({@required String? actionId, String? licenseNumber}) async =>
+      await methodChannel.invokeMethod("hoverStartTransaction",
+          {"action_id": actionId, "number": licenseNumber});
 
   @override
   void initState() {
     super.initState();
+    // Calls function to initialize Hover SDK when app initializes
     initialize();
   }
 
   TextEditingController _controller = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -52,13 +49,12 @@ class _HomeState extends State<Home> {
                   hintText: 'eg: AS 45 21',
                   hintStyle: TextStyle(color: Colors.white24),
                   enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white24),
+                    borderSide: BorderSide(color: Colors.white24),
                   ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Color(0xFFEA4934))
-                )
-                // border: InputBorder.none
-              ),
+                  focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xFFEA4934)))
+                  // border: InputBorder.none
+                  ),
             ),
             SizedBox(
               height: 20,
@@ -69,9 +65,9 @@ class _HomeState extends State<Home> {
                 width: 200,
                 child: Center(
                     child: Text(
-                      'Check Insurance',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    )),
+                  'Check Insurance',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                )),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(3),
                     border: Border.all(
@@ -80,10 +76,14 @@ class _HomeState extends State<Home> {
                         style: BorderStyle.solid)),
               ),
               onTap: () {
+                // Shows a snackbar if textfield is empty.
+                // Calls sendUssd with arguments if textfield isn't empty
                 if (_controller.text.isEmpty) {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Enter car license number')));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Enter car license number')));
                 } else {
-                  sendUssd(actionId: '26293b6d', licenseNumber: _controller.text);
+                  sendUssd(
+                      actionId: '26293b6d', licenseNumber: _controller.text);
                   _controller.clear();
                 }
               },
